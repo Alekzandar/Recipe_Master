@@ -1,5 +1,4 @@
 # Recipe_Master Server-Side Web Application Project
-======
 Recipe Master Server Side Access; Aleksandar Antonov; Maressa Reyes; Tawbin Nawshin; Jacky Li
 ### Technologies
 
