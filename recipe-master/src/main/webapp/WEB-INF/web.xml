@@ -16,10 +16,10 @@
 	</listener>	
 
 
-
-	<!-- Configure the only servlet we'll need for Spring MVC -->
+	<!-- The front controller of this Spring Web application, 
+		responsible for handling all application requests -->
 	<servlet>
-		<servlet-name>FrontController</servlet-name>
+		<servlet-name>springDispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -28,9 +28,9 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<!-- We want every request to go through this servlet -->
+	<!-- Map all requests to the DispatcherServlet for handling -->
 	<servlet-mapping>
-		<servlet-name>FrontController</servlet-name>
+		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 

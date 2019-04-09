@@ -35,6 +35,7 @@
 	 	<property name="password" value="${db.password}"/>
 	 </bean>
 	 
+	 
 	<!-- spring data is not natively compatible with hibernate it is compatible 
 		with JPA, and in turn any "vendor" of an ORM tool that is JPA compliant however 
 		we need to use a vendor adapter -->
@@ -54,15 +55,15 @@
 					org.hibernate.dialect.Oracle10gDialect
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.format_sql">true</prop>
 			</props>		
 		</property>
 	</bean>
 	
+	
 	<bean id="transactionManager" 
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />	
 	</bean>
-
 </beans>
