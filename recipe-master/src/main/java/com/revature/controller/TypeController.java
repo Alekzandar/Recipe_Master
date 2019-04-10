@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.data.TestRepository;
 import com.revature.model.TestEntity;
+import com.revature.model.TestRepository;
 
 @RestController
 @RequestMapping("/test")
