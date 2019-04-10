@@ -16,7 +16,7 @@ public class savedRecipes {
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="User_ID", nullable=false)
-	private User user;
+	private User User_ID;
 	
 	private String favRecipe1;
 	private String favRecipe2;
@@ -26,24 +26,28 @@ public class savedRecipes {
 	
 	public savedRecipes() {}
 
-	public savedRecipes(User user, String favRecipe1, String favRecipe2, String favRecipe3, String favRecipe4,
+
+	public savedRecipes(User user_ID, String favRecipe1, String favRecipe2, String favRecipe3, String favRecipe4,
 			String favRecipe5) {
 		super();
-		this.user = user;
+		User_ID = user_ID;
 		this.favRecipe1 = favRecipe1;
 		this.favRecipe2 = favRecipe2;
 		this.favRecipe3 = favRecipe3;
 		this.favRecipe4 = favRecipe4;
 		this.favRecipe5 = favRecipe5;
 	}
-
-	public User getUser() {
-		return user;
+	
+	
+	public User getUser_ID() {
+		return User_ID;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+
+	public void setUser_ID(User user_ID) {
+		User_ID = user_ID;
 	}
+
 
 	public String getFavRecipe1() {
 		return favRecipe1;
