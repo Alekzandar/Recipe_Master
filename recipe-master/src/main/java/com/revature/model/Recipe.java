@@ -88,9 +88,7 @@ public class Recipe {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	
-	
-	
-	
 
+	
+	
 }
