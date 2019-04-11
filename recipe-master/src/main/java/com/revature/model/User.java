@@ -27,7 +27,7 @@ public class User {
 	private String password;
 
 	@Column(nullable = false)
-	private String firstName;
+	private String firstname;
 
 	@Column(nullable = false)
 	private String email;
@@ -62,12 +62,14 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
+
+
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getEmail() {
@@ -94,12 +96,12 @@ public class User {
 		this.experience = experience;
 	}
 
-	public User(int id, String username, String password, String firstName, String email, int age, int experience) {
+	public User(int id, String username, String password, String firstname, String email, int age, int experience) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.firstName = firstName;
+		this.firstname = firstname;
 		this.email = email;
 		this.age = age;
 		this.experience = experience;
