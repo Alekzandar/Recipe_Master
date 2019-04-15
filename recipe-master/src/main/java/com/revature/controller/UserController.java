@@ -39,7 +39,7 @@ public class UserController {
 		return new ResponseEntity<List<User>>(repo.findAll(), HttpStatus.OK);
 	}
 	
-	//GET /users/id
+	//GET /users/username
 	//get user by id
 	@RequestMapping(value="/{username}")
 	public ResponseEntity<User> getByUsername(@PathVariable String username) {
