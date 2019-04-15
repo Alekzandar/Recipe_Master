@@ -40,7 +40,7 @@ public class UserController {
 		List<Recipe> recipesToUpdate = userToUpdate.getFaveRecipes();
 		recipesToUpdate.addAll(requestUser.getFaveRecipes());
 		userToUpdate.setFaveRecipes(recipesToUpdate);
-		return new ResponseEntity<User>(repo.save(userToUpdate), HttpStatus.CREATED);
+		return new ResponseEntity<User>(repo.save(t), HttpStatus.CREATED);
 
 	}
 	

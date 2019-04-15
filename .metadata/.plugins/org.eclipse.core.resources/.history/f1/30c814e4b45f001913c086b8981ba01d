@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Entity
+@Transactional
 @Table(name = "USER_INFO")
 public class User {
 	@Id

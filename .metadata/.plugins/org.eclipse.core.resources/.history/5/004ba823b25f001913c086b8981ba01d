@@ -9,7 +9,7 @@ import com.revature.model.User;
 @Transactional
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-
-	public User findById(int id);
+	
+	public User 
 
 }
