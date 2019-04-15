@@ -1,10 +1,17 @@
 package com.revature.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -41,6 +48,23 @@ public class User {
 
 	@Column(nullable = true)
 	private int experience;
+	
+	
+	@OneToMany
+	@JoinTable(name="USER_FAVORITE_RECIPES",
+		joinColumns = {@JoinColumn(name="USER_ID")},
+		inverseJoinColumns = {@JoinColumn(name="Recipe_ID")})
+		
+	private List<Recipe> faveRecipes;
+	
+	
+	public List<Recipe> getFaveRecipes() {
+		return faveRecipes;
+	}
+
+	public void setFaveRecipes(List<Recipe> faveRecipes) {
+		this.faveRecipes = faveRecipes;
+	}
 
 	public int getId() {
 		return id;
@@ -120,6 +144,22 @@ public class User {
 		this.email = email;
 		this.age = age;
 		this.experience = experience;
+	}
+	
+	
+
+	public User(int id, String username, String password, String firstname, String lastname, String email, int age,
+			int experience, List<Recipe> faveRecipes) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.age = age;
+		this.experience = experience;
+		this.faveRecipes = faveRecipes;
 	}
 
 	public User() {

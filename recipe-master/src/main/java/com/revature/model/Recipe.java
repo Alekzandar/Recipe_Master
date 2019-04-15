@@ -1,8 +1,15 @@
 package com.revature.model;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -28,6 +35,12 @@ public class Recipe {
 	private String restaurantChain;
 	private String imgUrl;
 	
+	@ManyToOne
+	@JoinTable(name="USER_FAVORITE_RECIPES",
+		joinColumns = {@JoinColumn(name="USER_ID", insertable = false, updatable = false)},
+		inverseJoinColumns = {@JoinColumn(name="Recipe_ID", insertable = false, updatable = false)})
+	private User user;
+	
 	
 	public Recipe() {}
 	
@@ -42,16 +55,26 @@ public class Recipe {
 	}
 
 
-	public Recipe(String title, int readyInMinutes, int servingSize, String restaurantChain, String imgUrl) {
+	public Recipe(String title, int readyInMinutes, int servingSize, String restaurantChain, String imgUrl, User user) {
 		super();
 		this.title = title;
 		this.readyInMinutes = readyInMinutes;
 		this.servingSize = servingSize;
 		this.restaurantChain = restaurantChain;
 		this.imgUrl = imgUrl;
+		this.user = user;
 	}
 	
 	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public int getId() {
 		return id;
 	}

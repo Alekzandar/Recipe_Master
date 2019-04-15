@@ -1,0 +1,28 @@
+package com.revature.data;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name="Saved_Recipes")
+public class savedRecipes {
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="User_ID", nullable=false)
+	private User user;
+	
+	private String favRecipe1;
+	private String favRecipe2;
+	private String favRecipe3;
+	private String favRecipe4;
+	private String favRecipe5;
+	
+
+}

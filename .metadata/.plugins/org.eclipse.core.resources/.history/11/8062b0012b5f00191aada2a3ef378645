@@ -1,0 +1,33 @@
+package com.revature.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name = "Saved_Recipes")
+public class SavedRecipes {
+	
+	@Id
+	@Column(name = "SavedRec_ID")
+	@SequenceGenerator(name = "SRec_ID_GEN", sequenceName = "SRec_ID", allocationSize = 1)
+	@GeneratedValue(generator = "SRec_ID_GEN", strategy = GenerationType.SEQUENCE)
+	private int id;
+	
+	@Column(nullable=false)
+	private User User_ID;
+	
+	private String facRec1;
+	private String favRec2;
+	private String favRec3;
+	private String favRec4;
+	private String favRec5;
+
+}

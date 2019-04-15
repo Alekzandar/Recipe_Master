@@ -1,0 +1,109 @@
+package com.revature.model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name = "Saved_Recipes")
+public class SavedRecipes {
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="USER_INFO",
+		joinColumns = {@JoinColumn(name="USER_ID")
+	private User user;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="Recipe_ID", nullable=false)
+	private Recipe recipe;
+	
+	private String facRec1;
+	private String favRec2;
+	private String favRec3;
+	private String favRec4;
+	private String favRec5;
+	
+	public SavedRecipes() {}
+
+	public SavedRecipes(User user, Recipe recipe, String facRec1, String favRec2, String favRec3, String favRec4,
+			String favRec5) {
+		super();
+		this.user = user;
+		this.recipe = recipe;
+		this.facRec1 = facRec1;
+		this.favRec2 = favRec2;
+		this.favRec3 = favRec3;
+		this.favRec4 = favRec4;
+		this.favRec5 = favRec5;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Recipe getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
+
+	public String getFacRec1() {
+		return facRec1;
+	}
+
+	public void setFacRec1(String facRec1) {
+		this.facRec1 = facRec1;
+	}
+
+	public String getFavRec2() {
+		return favRec2;
+	}
+
+	public void setFavRec2(String favRec2) {
+		this.favRec2 = favRec2;
+	}
+
+	public String getFavRec3() {
+		return favRec3;
+	}
+
+	public void setFavRec3(String favRec3) {
+		this.favRec3 = favRec3;
+	}
+
+	public String getFavRec4() {
+		return favRec4;
+	}
+
+	public void setFavRec4(String favRec4) {
+		this.favRec4 = favRec4;
+	}
+
+	public String getFavRec5() {
+		return favRec5;
+	}
+
+	public void setFavRec5(String favRec5) {
+		this.favRec5 = favRec5;
+	}
+	
+}

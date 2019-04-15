@@ -1,0 +1,11 @@
+package com.revature.data;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.revature.model.SavedRecipes;
+
+public interface SavedRecipeRepository extends JpaRepository <SavedRecipeRepository, Integer>{
+
+	
+
+}

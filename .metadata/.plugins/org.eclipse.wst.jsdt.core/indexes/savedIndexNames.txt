@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\tawbi\Desktop\JavaPractice\Recipe_Master\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3316619136.index
+368037290.index
+147921152.index
+1184663548.index
+157323394.index
+3258153335.index
