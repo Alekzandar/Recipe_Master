@@ -10,9 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Component
 @Entity
@@ -32,46 +36,54 @@ public class Recipe {
 	@Column(nullable=false)
 	private int servingSize;
 	
-	private String restaurantChain;
 	private String imgUrl;
 	
 	@ManyToOne
-	@JoinTable(name="USER_FAVORITE_RECIPES",
-		joinColumns = {@JoinColumn(name="USER_ID", insertable = false, updatable = false)},
-		inverseJoinColumns = {@JoinColumn(name="Recipe_ID", insertable = false, updatable = false)})
+	@JsonBackReference
 	private User user;
 	
 	
 	public Recipe() {}
 	
-	public Recipe(int id, String title, int readyInMinutes, int servingSize, String restaurantChain, String imgUrl) {
+	public Recipe(int id, String title, int readyInMinutes, int servingSize, String imgUrl) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.readyInMinutes = readyInMinutes;
 		this.servingSize = servingSize;
-		this.restaurantChain = restaurantChain;
 		this.imgUrl = imgUrl;
 	}
 
 
-	public Recipe(String title, int readyInMinutes, int servingSize, String restaurantChain, String imgUrl, User user) {
+	public Recipe(String title, int readyInMinutes, int servingSize, String imgUrl) {
 		super();
 		this.title = title;
 		this.readyInMinutes = readyInMinutes;
 		this.servingSize = servingSize;
-		this.restaurantChain = restaurantChain;
+		this.imgUrl = imgUrl;
+	}
+	
+	
+	
+	
+	public Recipe(int id, String title, int readyInMinutes, int servingSize, String imgUrl,
+			User user) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.readyInMinutes = readyInMinutes;
+		this.servingSize = servingSize;
 		this.imgUrl = imgUrl;
 		this.user = user;
 	}
 	
 	
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
+	public Recipe(String title, int readyInMinutes, int servingSize, String imgUrl, User user) {
+		super();
+		this.title = title;
+		this.readyInMinutes = readyInMinutes;
+		this.servingSize = servingSize;
+		this.imgUrl = imgUrl;
 		this.user = user;
 	}
 
@@ -99,18 +111,21 @@ public class Recipe {
 	public void setServingSize(int servingSize) {
 		this.servingSize = servingSize;
 	}
-	public String getRestaurantChain() {
-		return restaurantChain;
-	}
-	public void setRestaurantChain(String restaurantChain) {
-		this.restaurantChain = restaurantChain;
-	}
 	public String getImgUrl() {
 		return imgUrl;
 	}
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 
 	
 	

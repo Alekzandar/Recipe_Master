@@ -1,0 +1,11 @@
+com\revature\controller\RecipeController.class
+com\revature\data\TestRepository.class
+com\revature\model\TestEntity.class
+com\revature\model\User.class
+com\revature\data\RecipeRepository.class
+revature\com\service\UserService.class
+revature\com\service\TestService.class
+com\revature\model\Recipe.class
+com\revature\data\UserRepository.class
+com\revature\controller\TypeController.class
+com\revature\controller\UserController.class
