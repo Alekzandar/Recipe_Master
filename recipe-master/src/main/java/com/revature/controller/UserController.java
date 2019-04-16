@@ -51,4 +51,16 @@ public class UserController {
 			return new ResponseEntity<User>(u, HttpStatus.OK);
 		}
 	}
+	
+	@RequestMapping(value="/{id}")
+	public ResponseEntity<User> getById(@PathVariable int id) {
+		User u =  repo.findById(id);
+		if(u == null) {
+			//no user is found.. Http status of no content 
+			return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		}else {
+			//return user with status OK
+			return new ResponseEntity<User>(u, HttpStatus.OK);
+		}
+	}
 }

@@ -32,23 +32,6 @@ public class RecipeController {
 	@Autowired
 	UserRepository userRepo;
 
-//	//add recipe
-//	@RequestMapping(method=RequestMethod.POST,
-//			consumes = MediaType.APPLICATION_JSON_VALUE,
-//			produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<Recipe> add(@RequestBody Recipe r){
-//		r = recipeRepo.save(r);
-////		if(r.getUser() != null) {
-////			int userId = r.getId();
-////			User updateUser = userRepo.findById(userId);
-////			List<Recipe> recipesToUpdate = updateUser.getFaveRecipes();
-////			recipesToUpdate.add(r);
-////			updateUser.setFaveRecipes(recipesToUpdate);
-////		}
-//		return new ResponseEntity<Recipe>(r, HttpStatus.CREATED);
-//		
-//	}
-
 	// add list of recipes
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Recipe>> addAll(@RequestBody List<Recipe> recipes) {
