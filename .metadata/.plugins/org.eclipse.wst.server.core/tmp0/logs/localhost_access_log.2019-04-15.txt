@@ -22,3 +22,16 @@
 0:0:0:0:0:0:0:1 - - [15/Apr/2019:15:25:37 -0400] "GET /recipe-master/user HTTP/1.1" 500 11290
 127.0.0.1 - - [15/Apr/2019:15:27:13 -0400] "GET / HTTP/1.1" 404 1074
 127.0.0.1 - - [15/Apr/2019:15:28:10 -0400] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [15/Apr/2019:15:29:28 -0400] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [15/Apr/2019:22:50:22 -0400] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:22:50:23 -0400] "GET /recipe-master/WEB-INF/classes/com/revature/controller/UserController.java HTTP/1.1" 404 1047
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:22:50:37 -0400] "GET /recipe-master/user HTTP/1.1" 200 12
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:22:52:53 -0400] "POST /recipe-master/user HTTP/1.1" 400 1127
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:22:54:01 -0400] "POST /recipe-master/user HTTP/1.1" 400 1127
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:22:54:22 -0400] "POST /recipe-master/user HTTP/1.1" 201 162
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:22:59:45 -0400] "POST /recipe-master/user HTTP/1.1" 500 12438
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:23:03:12 -0400] "POST /recipe-master/recipe HTTP/1.1" 201 120
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:23:03:20 -0400] "POST /recipe-master/recipe HTTP/1.1" 201 120
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:23:03:35 -0400] "GET /recipe-master/recipe HTTP/1.1" 200 232
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:23:04:35 -0400] "POST /recipe-master/user HTTP/1.1" 500 17534
+0:0:0:0:0:0:0:1 - - [15/Apr/2019:23:06:08 -0400] "PATCH /recipe-master/user HTTP/1.1" 500 3353
