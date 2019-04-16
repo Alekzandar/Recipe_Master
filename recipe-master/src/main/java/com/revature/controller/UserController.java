@@ -51,14 +51,4 @@ public class UserController {
 			return new ResponseEntity<User>(u, HttpStatus.OK);
 		}
 	}
-	
-	@RequestMapping(method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> addRecipe(@RequestBody User requestUser) {
-		User userToUpdate = repo.findById(requestUser.getId());
-		List<Recipe> recipesToUpdate = userToUpdate.getFaveRecipes();
-		recipesToUpdate.addAll(requestUser.getFaveRecipes());
-		userToUpdate.setFaveRecipes(recipesToUpdate);
-		return new ResponseEntity<User>(repo.save(userToUpdate), HttpStatus.CREATED);
-
-	}
 }

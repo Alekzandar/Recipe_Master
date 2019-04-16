@@ -137,6 +137,7 @@ public class User {
 	
     public void addRecipe(Recipe r) {
         this.faveRecipes.add(r);
+        r.setUser(this);
     }
  
     public void removeRecipe(Recipe r) {

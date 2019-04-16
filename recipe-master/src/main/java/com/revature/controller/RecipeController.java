@@ -65,9 +65,7 @@ public class RecipeController {
 			}
 		}
 		
-		
 		return new ResponseEntity<List<Recipe>>(recipes, HttpStatus.CREATED);
-
 	}
 
 	// get all recipes
