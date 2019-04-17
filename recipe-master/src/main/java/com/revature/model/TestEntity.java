@@ -24,6 +24,7 @@ public class TestEntity {
 	@SequenceGenerator(name="T_ID_GEN", sequenceName="ERS_TYPE_ID", allocationSize=1)
 	@GeneratedValue(generator="T_ID_GEN", strategy=GenerationType.SEQUENCE)	
 	private int id;
+	
 	private String name;
 	
 	public TestEntity() {}

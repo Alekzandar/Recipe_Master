@@ -6,17 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.data.UserRepository;
+import com.revature.model.Recipe;
 import com.revature.model.User;
+
+
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = {"http://localhost:8085", "http://localhost:4200"}, methods = {RequestMethod.GET, RequestMethod.POST})
 public class UserController {
+	
 	@Autowired
 	UserRepository repo;
 
@@ -29,5 +36,34 @@ public class UserController {
 	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<User>> getAll() {
 		return new ResponseEntity<List<User>>(repo.findAll(), HttpStatus.OK);
+	}
+	
+	//GET /user/username
+	//get user by id
+	@RequestMapping(value="/{username}")
+	public ResponseEntity<User> getByUsername(@PathVariable String username) {
+		User u =  repo.findByUsernameIgnoreCase(username);
+		if(u == null) {
+			//no user is found.. Http status of no content 
+			return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		}else {
+			//return user with status OK
+			return new ResponseEntity<User>(u, HttpStatus.OK);
+		}
+	}
+	
+	
+	//get recipe by /user/id/id
+	@RequestMapping(value="/id/{id}")
+	public ResponseEntity<List<Recipe>> getById(@PathVariable int id) {
+		User u =  repo.findById(id);
+		List<Recipe> userFaves = u.getFaveRecipes();
+		if(userFaves == null || userFaves.size() < 1) {
+			//no user is found.. Http status of no content 
+			return new ResponseEntity<List<Recipe>>(HttpStatus.NO_CONTENT);
+		}else {
+			//return user with status OK
+			return new ResponseEntity<List<Recipe>>(userFaves, HttpStatus.OK);
+		}
 	}
 }

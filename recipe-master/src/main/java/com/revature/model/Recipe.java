@@ -3,94 +3,101 @@ package com.revature.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Component
 @Entity
-@Table(name="Recipe")
+@Table(name = "Recipe")
 public class Recipe {
-	
+
 	@Id
-	@Column(name="Recipe_ID")
+	@Column(name = "Recipe_ID")
 	private int id;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String title;
-	
-	@Column(nullable=false)
-	private int readyInMinutes;
-	
-	@Column(nullable=false)
-	private int servingSize;
-	
-	private String restaurantChain;
-	private String imgUrl;
-	
-	
-	public Recipe() {}
-	
-	public Recipe(int id, String title, int readyInMinutes, int servingSize, String restaurantChain, String imgUrl) {
+
+	@Column
+	private String ingredients;
+
+	@Column
+	private String image;
+
+	@ManyToOne
+	@JsonBackReference
+	private User user;
+
+	public Recipe() {
+	}
+
+	public Recipe(int id, String title, String ingredients, String image) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.readyInMinutes = readyInMinutes;
-		this.servingSize = servingSize;
-		this.restaurantChain = restaurantChain;
-		this.imgUrl = imgUrl;
+		this.ingredients = ingredients;
+		this.image = image;
+	}
+	
+	public Recipe(int id, String title, String ingredients, String image, User user) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.ingredients = ingredients;
+		this.image = image;
+		this.user = user;
 	}
 
-
-	public Recipe(String title, int readyInMinutes, int servingSize, String restaurantChain, String imgUrl) {
+	public Recipe(String title, String ingredients, String image, User user) {
 		super();
 		this.title = title;
-		this.readyInMinutes = readyInMinutes;
-		this.servingSize = servingSize;
-		this.restaurantChain = restaurantChain;
-		this.imgUrl = imgUrl;
+		this.ingredients = ingredients;
+		this.image = image;
+		this.user = user;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getReadyInMinutes() {
-		return readyInMinutes;
+
+	public String getIngredients() {
+		return ingredients;
 	}
-	public void setReadyInMinutes(int readyInMinutes) {
-		this.readyInMinutes = readyInMinutes;
+
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
 	}
-	public int getServingSize() {
-		return servingSize;
+
+	public String getImage() {
+		return image;
 	}
-	public void setServingSize(int servingSize) {
-		this.servingSize = servingSize;
+
+	public void setImage(String image) {
+		this.image = image;
 	}
-	public String getRestaurantChain() {
-		return restaurantChain;
+
+	public User getUser() {
+		return user;
 	}
-	public void setRestaurantChain(String restaurantChain) {
-		this.restaurantChain = restaurantChain;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public String getImgUrl() {
-		return imgUrl;
-	}
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
-	
-	
-	
-	
 
 }
