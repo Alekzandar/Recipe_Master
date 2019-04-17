@@ -38,7 +38,7 @@ public class UserController {
 		return new ResponseEntity<List<User>>(repo.findAll(), HttpStatus.OK);
 	}
 	
-	//GET /users/username
+	//GET /user/username
 	//get user by id
 	@RequestMapping(value="/{username}")
 	public ResponseEntity<User> getByUsername(@PathVariable String username) {
@@ -52,15 +52,18 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/{id}")
-	public ResponseEntity<User> getById(@PathVariable int id) {
+	
+	//get recipe by /user/id/id
+	@RequestMapping(value="/id/{id}")
+	public ResponseEntity<List<Recipe>> getById(@PathVariable int id) {
 		User u =  repo.findById(id);
-		if(u == null) {
+		List<Recipe> userFaves = u.getFaveRecipes();
+		if(userFaves == null || userFaves.size() < 1) {
 			//no user is found.. Http status of no content 
-			return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<Recipe>>(HttpStatus.NO_CONTENT);
 		}else {
 			//return user with status OK
-			return new ResponseEntity<User>(u, HttpStatus.OK);
+			return new ResponseEntity<List<Recipe>>(userFaves, HttpStatus.OK);
 		}
 	}
 }
