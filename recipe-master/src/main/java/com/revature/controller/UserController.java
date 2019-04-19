@@ -24,7 +24,7 @@ import com.revature.model.User;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = {"http://localhost:8085", "http://localhost:4200"}, methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = {"http://localhost:8085", "http://localhost:4200"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
 public class UserController {
 	
 	private static Logger log =  Logger.getLogger(UserController.class);
