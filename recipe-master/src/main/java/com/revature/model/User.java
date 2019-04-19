@@ -5,14 +5,18 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.stereotype.Component;
@@ -51,8 +55,9 @@ public class User {
 	@Column(nullable = true)
 	private int experience;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.REMOVE)
 	@JsonManagedReference
 	@JoinTable(name="USER_FAVORITE_RECIPES")
 	private List<Recipe> faveRecipes = new ArrayList<>();
@@ -135,15 +140,17 @@ public class User {
 		this.faveRecipes = faveRecipes;
 	}
 	
+
     public void addRecipe(Recipe r) {
         this.faveRecipes.add(r);
         r.setUser(this);
     }
  
     public void removeRecipe(Recipe r) {
-        faveRecipes.remove(r);
+        this.faveRecipes.remove(r);
         r.setUser(null);
     }
+	
 	
 
 	public User(int id, String username, String password, String firstname, String lastname, String email, int age, int experience) {

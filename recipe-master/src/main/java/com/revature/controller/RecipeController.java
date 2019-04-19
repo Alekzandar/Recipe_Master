@@ -70,5 +70,18 @@ public class RecipeController {
 		}
 		return new ResponseEntity<Recipe>(r, HttpStatus.OK);
 	}
+	
+	// remove recipes by ID
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Recipe> deleteRecipe(@PathVariable int id) {
+		if (id == 0) {
+			return new ResponseEntity<Recipe>(HttpStatus.NO_CONTENT);
+		}
+		Recipe toRemove = recipeRepo.getOne(id);
+		log.trace("REMOVING THE RECIPE FROM RECIPE REPO BY ID: " + id);;
+		recipeRepo.delete(id);
+		return new ResponseEntity<Recipe>(toRemove, HttpStatus.ACCEPTED);
+	}
+	
 
 }
